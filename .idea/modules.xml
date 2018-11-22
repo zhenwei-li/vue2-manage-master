@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/iview-admin-dev.iml" filepath="$PROJECT_DIR$/.idea/iview-admin-dev.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/vue2-manage-master.iml" filepath="$PROJECT_DIR$/.idea/vue2-manage-master.iml" />
     </modules>
   </component>
 </project>

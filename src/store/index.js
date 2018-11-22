@@ -1,25 +1,39 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from 'vue'
+import Vuex from 'vuex'
+import {getAdminInfo} from '@/api/getData'
 
-import app from './modules/app';
-import user from './modules/user';
+Vue.use(Vuex)
 
-Vue.use(Vuex);
+const state = {
+    userInfo: localStorage.getItem("userInfo") || {},
+}
 
-const store = new Vuex.Store({
-    state: {
-        //
+const mutations = {
+    saveAdminInfo(state, data) {
+        // data.date = new  Date().getTime();
+        // data.time = 3600;
+        localStorage.setItem('userInfo', JSON.stringify(data));
+        state.userInfo = data;
     },
-    mutations: {
-        //
-    },
-    actions: {
-
-    },
-    modules: {
-        app,
-        user
+    deteleUserInfo(state) {
+        localStorage.removeItem('userInfo');
+        state.userInfo = {};
     }
-});
+}
 
-export default store;
+const actions = {
+    async setUserInfo({commit},data) {
+        console.log("data>>>     "+ JSON.stringify(data))
+        commit('saveAdminInfo', data);
+    },
+    async deteleUserInfo({commit}) {
+        console.log("deteleUserInfo>>>     ")
+        commit('deteleUserInfo');
+    }
+}
+
+export default new Vuex.Store({
+    state,
+    actions,
+    mutations,
+})
